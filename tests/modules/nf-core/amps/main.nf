@@ -5,7 +5,7 @@ moduleDir = launchDir
 
 include { UNZIP as UNZIP_MALT        } from "$moduleDir/modules/nf-core/unzip/main.nf"
 include { UNZIP as UNZIP_MALTEXTRACT } from "$moduleDir/modules/nf-core/unzip/main.nf"
-include { MALT_BUILD  } from  '$moduleDir/modules/nf-core/malt/build/main.nf'
+include { MALT_BUILD  } from "$moduleDir/modules/nf-core/malt/build/main.nf"
 include { MALT_RUN    } from "$moduleDir/modules/nf-core/malt/run/main.nf"
 include { MALTEXTRACT } from "$moduleDir/modules/nf-core/maltextract/main.nf"
 include { AMPS        } from "$moduleDir/modules/nf-core/amps/main.nf"
