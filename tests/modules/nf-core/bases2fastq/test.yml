@@ -3,7 +3,7 @@
   tags:
     - "bases2fastq"
   files:
-    - path: output/bases2fastq/output/Bases2Fastq-Sim_QC.html
+    - path: output/bases2fastq/output/20230404-Bases2Fastq-Sim_QC.html
     - path: output/bases2fastq/output/Metrics.csv
       md5sum: 6275702afbe92d37db0c95c6097b91c3
     - path: output/bases2fastq/output/RunManifest.json
