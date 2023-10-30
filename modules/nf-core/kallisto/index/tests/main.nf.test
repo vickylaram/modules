@@ -8,7 +8,7 @@ nextflow_process {
     tag "kallisto"
     tag "kallisto_index"
 
-    test("Should run without failures") {
+    test("kallisto/index") {
 
         when {
             process {
