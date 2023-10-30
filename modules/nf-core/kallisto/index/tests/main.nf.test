@@ -8,7 +8,7 @@ nextflow_process {
     tag "kallisto"
     tag "kallisto_index"
 
-    test("kallisto/index") {
+    test("homo_sapiens genome_fasta") {
 
         when {
             process {

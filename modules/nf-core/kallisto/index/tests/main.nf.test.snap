@@ -1,5 +1,5 @@
 {
-    "Should run without failures": {
+    "homo_sapiens genome_fasta": {
         "content": [
             {
                 "0": [
@@ -26,6 +26,6 @@
                 ]
             }
         ],
-        "timestamp": "2023-10-30T17:37:30.157163"
+        "timestamp": "2023-10-30T18:41:10.745207"
     }
 }
