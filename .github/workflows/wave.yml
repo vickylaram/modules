@@ -19,12 +19,11 @@ jobs:
       docker-matrix: ${{ steps.docker-diff.outputs.all_changed_files }}
       spack-matrix: ${{ steps.spack-diff.outputs.all_changed_files }}
     steps:
-      - name: Checkout
-        uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
       - name: Find conda differences
         id: conda-diff
-        uses: tj-actions/changed-files@v35
+        uses: tj-actions/changed-files@v42
         with:
           json: true
           quotepath: false
@@ -33,7 +32,7 @@ jobs:
 
       - name: Find Dockerfile differences
         id: docker-diff
-        uses: tj-actions/changed-files@v35
+        uses: tj-actions/changed-files@v42
         with:
           json: true
           quotepath: false
@@ -42,7 +41,7 @@ jobs:
 
       - name: Find Spack differences
         id: spack-diff
-        uses: tj-actions/changed-files@v35
+        uses: tj-actions/changed-files@v42
         with:
           json: true
           quotepath: false
@@ -60,7 +59,7 @@ jobs:
       matrix: "${{ fromJson(needs.gen-matrix.outputs.conda-matrix) }}"
     steps:
       # Use the @nf-core-bot token to check out so we can push later
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
       - name: Install wave-cli
         run: |
@@ -97,7 +96,7 @@ jobs:
       matrix: "${{ fromJson(needs.gen-matrix.outputs.docker-matrix) }}"
     steps:
       # Use the @nf-core-bot token to check out so we can push later
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
       - name: Install wave-cli
         run: |
@@ -134,7 +133,7 @@ jobs:
       matrix: "${{ fromJson(needs.gen-matrix.outputs.spack-matrix) }}"
     steps:
       # Use the @nf-core-bot token to check out so we can push later
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
       - name: Install wave-cli
         run: |
