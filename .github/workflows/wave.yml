@@ -27,6 +27,7 @@ jobs:
         with:
           json: true
           quotepath: false
+          escape_json: false
           files: |
             modules/**/environment.yml
 
@@ -36,6 +37,7 @@ jobs:
         with:
           json: true
           quotepath: false
+          escape_json: false
           files: |
             modules/**/Dockerfile
 
@@ -45,6 +47,7 @@ jobs:
         with:
           json: true
           quotepath: false
+          escape_json: false
           files: |
             modules/**/spack.yml
 
@@ -56,7 +59,9 @@ jobs:
     timeout-minutes: 60
     strategy:
       fail-fast: false
-      matrix: "${{ fromJson(needs.gen-matrix.outputs.conda-matrix) }}"
+      max-parallel: 4
+      matrix:
+        files: "${{ fromJson(needs.gen-matrix.outputs.conda-matrix) }}"
     steps:
       # Use the @nf-core-bot token to check out so we can push later
       - uses: actions/checkout@v4
@@ -93,7 +98,9 @@ jobs:
     timeout-minutes: 60
     strategy:
       fail-fast: false
-      matrix: "${{ fromJson(needs.gen-matrix.outputs.docker-matrix) }}"
+      max-parallel: 4
+      matrix:
+        files: "${{ fromJson(needs.gen-matrix.outputs.conda-matrix) }}"
     steps:
       # Use the @nf-core-bot token to check out so we can push later
       - uses: actions/checkout@v4
@@ -130,7 +137,9 @@ jobs:
     timeout-minutes: 60
     strategy:
       fail-fast: false
-      matrix: "${{ fromJson(needs.gen-matrix.outputs.spack-matrix) }}"
+      max-parallel: 4
+      matrix:
+        files: "${{ fromJson(needs.gen-matrix.outputs.conda-matrix) }}"
     steps:
       # Use the @nf-core-bot token to check out so we can push later
       - uses: actions/checkout@v4
