@@ -26,7 +26,6 @@ jobs:
         uses: tj-actions/changed-files@v42
         with:
           json: true
-          quotepath: false
           escape_json: false
           files: |
             modules/**/environment.yml
@@ -36,17 +35,18 @@ jobs:
         uses: tj-actions/changed-files@v42
         with:
           json: true
-          quotepath: false
           escape_json: false
           files: |
             modules/**/Dockerfile
+
+      - name: List all changed files
+        run: echo '${{ steps.docker-diff.outputs.all_changed_files }}'
 
       - name: Find Spack differences
         id: spack-diff
         uses: tj-actions/changed-files@v42
         with:
           json: true
-          quotepath: false
           escape_json: false
           files: |
             modules/**/spack.yml
