@@ -39,9 +39,6 @@ jobs:
           files: |
             modules/**/Dockerfile
 
-      - name: List all changed files
-        run: echo '${{ steps.docker-diff.outputs.all_changed_files }}'
-
       - name: Find Spack differences
         id: spack-diff
         uses: tj-actions/changed-files@v42
@@ -100,7 +97,7 @@ jobs:
       fail-fast: false
       max-parallel: 4
       matrix:
-        files: "${{ fromJson(needs.gen-matrix.outputs.conda-matrix) }}"
+        files: "${{ fromJson(needs.gen-matrix.outputs.docker-matrix) }}"
     steps:
       # Use the @nf-core-bot token to check out so we can push later
       - uses: actions/checkout@v4
@@ -139,7 +136,7 @@ jobs:
       fail-fast: false
       max-parallel: 4
       matrix:
-        files: "${{ fromJson(needs.gen-matrix.outputs.conda-matrix) }}"
+        files: "${{ fromJson(needs.gen-matrix.outputs.spack-matrix) }}"
     steps:
       # Use the @nf-core-bot token to check out so we can push later
       - uses: actions/checkout@v4
